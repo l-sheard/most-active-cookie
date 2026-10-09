@@ -4,20 +4,21 @@ import subprocess
 import sys
 from pathlib import Path
 
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+TEST_CSV = Path(__file__).resolve().parent / "resources" / "test_cookie_log.csv"
+
 
 def test_script_end_to_end():
-    project_dir = Path(__file__).resolve().parent.parent
-
     result = subprocess.run(
         [
             sys.executable,
             "most_active_cookie",
             "-f",
-            "cookie_log.csv",
+            str(TEST_CSV),
             "-d",
             "2018-12-09",
         ],
-        cwd=project_dir,
+        cwd=PROJECT_DIR,
         capture_output=True,
         text=True,
         check=False,
@@ -29,18 +30,16 @@ def test_script_end_to_end():
 
 
 def test_script_end_to_end_with_three_way_tie():
-    project_dir = Path(__file__).resolve().parent.parent
-
     result = subprocess.run(
         [
             sys.executable,
             "most_active_cookie",
             "-f",
-            "cookie_log.csv",
+            str(TEST_CSV),
             "-d",
             "2018-12-08",
         ],
-        cwd=project_dir,
+        cwd=PROJECT_DIR,
         capture_output=True,
         text=True,
         check=False,
