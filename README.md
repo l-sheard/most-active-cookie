@@ -126,5 +126,5 @@ ruff format .
 
 ## Design Decisions
 - The repo is split into `src/` and `tests/` directories for a clean structure. This, along with the packaging and installation configuration in `pyproject.toml` allows the project to be installed using `pip`, exposing `most_active_cookie` as a command-line command.
-- The `most_active_cookie` file at the project root is an executable wrapper allowing the application to be run directly without installation.
-- The application is split into modules for the different functional components required for the task. This makes it easier to add additional functionality to the cli at a later date. Each module has a corresponding test file which tests the core functionality and edge cases.
+- The `most_active_cookie` file at the project root is an executable wrapper allowing the application to also be run directly without installation.
+- The application is split into modules for the different functional components required for the task. This makes it easier to add additional functionality to the CLI at a later date. Each module has a corresponding test file which tests the core functionality and edge cases.
