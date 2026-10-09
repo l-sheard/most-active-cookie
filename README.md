@@ -88,6 +88,7 @@ The program prints the most active cookie(s) for the specified date to standard 
 If multiple cookies share the highest frequency, each is printed on a separate line.
 
 ## Running Tests
+It is recommended to activate a virtual environment (see Installation above) before installing the test dependencies.
 
 Install the optional test dependencies:
 
