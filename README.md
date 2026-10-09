@@ -129,7 +129,7 @@ ruff format .
 
 - Input files must be in CSV format.
 - If there are no active cookies on the specified date, nothing is printed to stdout, and the program exits successfully.
-- We assume that the statement *"Cookies in the log file are sorted by timestamp (most recent occurrence is the first line of the file)"* takes timezone offsets into account. This allows us to use an early stopping condition when reading the log file; once a record with a date earlier than the target date is encountered, we break and don't read any more of the file.
+- I have assumed that the statement *"Cookies in the log file are sorted by timestamp (most recent occurrence is the first line of the file)"* takes timezone offsets into account. This allowed me to use an early stopping condition when reading the log file, making the implementation more efficient; once a record with a date earlier than the target date is encountered, a break condition is met and no more of the file is read.
 - All timestamps are converted to UTC before any date comparisons are made.
 - Blank lines in the input file are skipped, and the program continues reading the file.
 - The input `-d` parameter must be in the format `YYYY-MM-DD`.
