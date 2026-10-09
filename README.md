@@ -33,7 +33,7 @@ It is recommended to use a virtual environment when installing the package or de
 
 Create and activate a virtual environment from the project root:
 
-**macOS / Linux:**
+**Linux / macOS:**
 
 ```bash
 python3 -m venv .venv
@@ -52,14 +52,13 @@ Install the package:
 ```bash
 python -m pip install .
 ```
+*Note: On some Linux/macOS systems, you may need to use `python3` instead of `python` when running commands outside the virtual environment.*
 
 Once installed, run the command:
 
 ```bash
 most_active_cookie -f cookie_log.csv -d 2018-12-09
 ```
-
-*Note: On some macOS/Linux systems, use `python3` instead of `python` when running commands outside a virtual environment.*
 
 ### Arguments
 
