@@ -21,8 +21,6 @@ Run the program from the project root without installation.
 ./most_active_cookie -f cookie_log.csv -d 2018-12-09
 ```
 
-If the executable permission is not set, run `chmod +x most_active_cookie`.
-
 **Windows (PowerShell / Command Prompt):**
 
 ```powershell
@@ -31,7 +29,25 @@ python most_active_cookie -f cookie_log.csv -d 2018-12-09
 
 ### Installation (Optional)
 
-Install the package from the project root:
+It is recommended to use a virtual environment when installing the package or development dependencies.
+
+Create and activate a virtual environment from the project root:
+
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+Install the package:
 
 ```bash
 python -m pip install .
@@ -43,7 +59,7 @@ Once installed, run the command:
 most_active_cookie -f cookie_log.csv -d 2018-12-09
 ```
 
-*Note: On some macOS/Linux systems, use `python3` instead of `python`.*
+*Note: On some macOS/Linux systems, use `python3` instead of `python` when running commands outside a virtual environment.*
 
 ### Arguments
 
@@ -85,8 +101,6 @@ Run the test suite:
 python -m pytest -v
 ```
 
-*Note: On some macOS/Linux systems, use `python3` instead of `python`.*
-
 ## Development Tools
 
 I used Ruff for linting and formatting the Python code.
@@ -104,7 +118,7 @@ ruff check .
 ruff format --check .
 ```
 
-To automatically fix the linting issues and format the code:
+To automatically fix linting issues and format the code:
 
 ```bash
 ruff check . --fix
@@ -115,7 +129,7 @@ ruff format .
 
 - Input files must be in CSV format.
 - If there are no active cookies on the specified date, nothing is printed to stdout, and the program exits successfully.
-- We assume that the statement *"Cookies in the log file are sorted by timestamp (most recent occurrence is the first line of the file)"* takes timezone offsets into account. This allows us to use an early stopping condition when reading the log file; once a record with a date earlier than the target date is encountered we break and don't read any more of the file.
+- We assume that the statement *"Cookies in the log file are sorted by timestamp (most recent occurrence is the first line of the file)"* takes timezone offsets into account. This allows us to use an early stopping condition when reading the log file; once a record with a date earlier than the target date is encountered, we break and don't read any more of the file.
 - All timestamps are converted to UTC before any date comparisons are made.
 - Blank lines in the input file are skipped, and the program continues reading the file.
 - The input `-d` parameter must be in the format `YYYY-MM-DD`.
@@ -125,6 +139,7 @@ ruff format .
 - The CSV file header `cookie,timestamp` is required, and whitespace is stripped from the header fields before validation.
 
 ## Design Decisions
-- The repo is split into `src/` and `tests/` directories for a clean structure. This, along with the packaging and installation configuration in `pyproject.toml` allows the project to be installed using `pip`, exposing `most_active_cookie` as a command-line command.
+
+- The repo is split into `src/` and `tests/` directories for a clean structure. This, along with the packaging and installation configuration in `pyproject.toml`, allows the project to be installed using `pip`, exposing `most_active_cookie` as a command-line command.
 - The `most_active_cookie` file at the project root is an executable wrapper allowing the application to also be run directly without installation.
 - The application is split into modules for the different functional components required for the task. This makes it easier to add additional functionality to the CLI at a later date. Each module has a corresponding test file which tests the core functionality and edge cases.
